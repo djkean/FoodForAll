@@ -1,0 +1,23 @@
+* {
+background-color: cornflowerblue;
+}
+
+#playerClass {
+    background-color: aliceblue;
+}
+
+#inputButton {
+    background-color: aliceblue;
+}
+
+#playerName {
+    background-color: aliceblue;
+}
+
+#playerCount {
+    padding: 5px;
+    max-width: 200px;
+    min-width: 200px;
+    background-color: blueviolet;
+    border: 3px solid black;
+}
