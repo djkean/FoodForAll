@@ -34,15 +34,15 @@ function showActivePlayers() {
     for (const [index, player] of playerInfo.entries()) {
         playerCount.innerHTML += `
         <div>
-            ${player.name}
+            `+ player.name + `
             <br>
-                <img src="images/${player.icon}.png" width="96" height="96" alt="a delicious looking picture of food">
+                <img src="images/`+ player.icon +`.png" width="96" height="96" alt="a delicious looking picture of food">
             <br>
-                health: ${player.health}
+                health: ` + player.health + `
             <br>
-                attack: ${player.attack}
+                attack: ` + player.attack + `
             <br>
-                weapon: ${player.weapon}
+                weapon: ` + player.weapon + `
         </div>    
         `
         console.log(player);
