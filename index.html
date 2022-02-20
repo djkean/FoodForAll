@@ -12,7 +12,7 @@
         <div id="playerCount">
         </div>
         <form id="addNewPlayer">
-          <input placeholder="Player Name" id="playerName">
+          <input placeholder="Player Name" id="playerName" pattern="[a-zA-Z0-9]+">
 
           <select id="playerClass">
               <option value="Pizza">Pizza</option>
@@ -20,9 +20,9 @@
               <option value="Burger">Burger</option>
               <option value="Fries">Fries</option>
           </select>
-
           <input id="inputButton" type="submit" value="Add New Player">
       </form>
+      <button onclick="createRandomPlayer()">Create Random Player</button>
         <script src="FFA.js"></script>
     </body>
 </html>
