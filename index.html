@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <link rel="stylesheet" href="styles.css"/>
-        <title>Food For All!</title>
-    </head>
-    <body>
-        <div id="activePlayers">
-        </div>
-        <div id="playerCount">
-        </div>
-        <form id="addNewPlayer">
-          <input placeholder="Player Name" id="playerName" pattern="[a-zA-Z0-9]+">
-          <select id="playerClass">
-              <option value="Pizza">Pizza</option>
-              <option value="Hotdog">Hotdog</option>
-              <option value="Burger">Burger</option>
-              <option value="Fries">Fries</option>
-          </select>
-          <select id="weaponClass">
-              <option value="0">Pizza Cutter</option>
-              <option value="1">Spatula</option>
-              <option value="2">Butter Knife</option>
-          </select>
-          <input id="inputButton" type="submit" value="Add New Player">
-      </form>
-      <button onclick="createRandomPlayer()">Create Random Player</button>
-        <script src="FFA.js"></script>
-    </body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Food For All!</title>
+  </head>
+  <body>
+    <div id="activePlayers"></div>
+    <div id="playerCount"></div>
+    <form id="addNewPlayer">
+      <input placeholder="Player Name" id="playerName" pattern="[a-zA-Z0-9]+" />
+      <select id="playerClass">
+        <option value="Pizza">Pizza</option>
+        <option value="Hotdog">Hotdog</option>
+        <option value="Burger">Burger</option>
+        <option value="Fries">Fries</option>
+        <option value="Steak">Steak</option>
+        <option value="Egg">Egg</option>
+      </select>
+      <select id="weaponClass">
+        <option value="0">Pizza Cutter</option>
+        <option value="1">Spatula</option>
+        <option value="2">Butter Knife</option>
+        <option value="3">Steak Knife</option>
+      </select>
+      <input id="inputButton" type="submit" value="Add New Player" />
+    </form>
+    <button onclick="createRandomPlayer()">Create Random Player</button>
+    <div id="page2"></div>
+    <script src="FFA.js"></script>
+  </body>
 </html>

@@ -1,41 +1,41 @@
 * {
-background-color: cornflowerblue;
+  background-color: cornflowerblue;
 }
 
-html, body {
-margin: 0;
-padding: 0;
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 #playerClass {
-    background-color: aliceblue;
+  background-color: aliceblue;
 }
 
 #weaponClass {
-    background-color: aliceblue;
+  background-color: aliceblue;
 }
 
 #inputButton {
-    background-color: aliceblue;
+  background-color: aliceblue;
 }
 
 #playerName {
-    background-color: aliceblue;
+  background-color: aliceblue;
 }
 
 #playerCount {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 5px;
-    max-width: 100%;
-    min-width: 100%;
-    background-color: blueviolet;
-    border: 3px solid black;
-    gap: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5px;
+  max-width: 100%;
+  min-width: 100%;
+  background-color: blueviolet;
+  border: 3px solid black;
+  gap: 5px;
 }
 
 #playerCount > div {
-padding: 1px 10px 5px 10px;
+  padding: 1px 10px 5px 10px;
 }
-
