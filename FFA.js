@@ -25,6 +25,11 @@ const weaponList = {
   3: { name: "Steak Knife", attack: 23, strongAgainst: "Steak" },
 };
 
+document.getElementById("createRandomPlayer").addEventListener("click", (e) => {
+  e.preventDefault();
+  createRandomPlayer();
+  });
+  
 document.getElementById("addNewPlayer").addEventListener("submit", (e) => {
   e.preventDefault();
   const playerName = document.getElementById("playerName").value;
@@ -44,6 +49,10 @@ function addNewPlayer(playerName, playerIcon, playerWeapon) {
       attack: 20,
       weapon: playerWeaponValue,
     });
+  } else {
+    document.getElementById("inputButton").disabled = true;
+    document.getElementById("createRandomPlayer").disabled = true;
+    document.getElementById("createRandomPlayer").innerText = "Max Players (20) Achieved";
   }
 }
 
@@ -94,12 +103,15 @@ function showActivePlayers() {
 
 function removePlayer(index) {
   if (confirm("Delete this player?")) {
+    document.getElementById("inputButton").disabled = false;
+    document.getElementById("createRandomPlayer").disabled = false;
+    document.getElementById("createRandomPlayer").innerText = "Create Random Player";
     playerInfo.splice(index, 1);
     showActivePlayers();
   }
 }
 
-function createRandomPlayer(createAmountPlaceholder) {
+function createRandomPlayer(createAmountPlaceholder = null) {
   const randomPlayerName = nameList[getRandomName()];
   const randomPlayerIcon = iconList[getRandomIcon()];
   const randomPlayerWeapon = getRandomWeapon();
