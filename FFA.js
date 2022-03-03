@@ -39,6 +39,15 @@ document.getElementById("addNewPlayer").addEventListener("submit", (e) => {
   showActivePlayers();
 });
 
+document.getElementById("beginGame").addEventListener("click", (e) => {
+  e.preventDefault();
+  beginGame();
+});
+
+window.onload = function() {
+  document.getElementById("page2").style.display = "none";
+}
+
 function addNewPlayer(playerName, playerIcon, playerWeapon) {
   if (playerInfo.length < 20) {
     const playerWeaponValue = getWeaponData(playerWeapon);
@@ -49,6 +58,7 @@ function addNewPlayer(playerName, playerIcon, playerWeapon) {
       attack: 20,
       weapon: playerWeaponValue,
     });
+ 
   } else {
     document.getElementById("inputButton").disabled = true;
     document.getElementById("createRandomPlayer").disabled = true;
@@ -142,4 +152,17 @@ function getWeaponData(weaponIndex) {
     }
   });
   return weaponData;
+}
+
+function beginGame() {
+  if (confirm("Begin the game?") && (playerInfo.length >= 2)) {
+    document.getElementById("beginGame").value;
+    document.getElementById("page1").style.display = "none";
+    document.getElementById("page2").style.display = "block";
+    document.getElementById("playerCount").style.flexDirection = "column";
+    document.getElementById("playerCount").style.justifyContent = "left";
+  }
+  else {
+    document.getElementById("beginGame").innerText = "You must have 2 or more players";
+  }
 }
