@@ -17,12 +17,15 @@ const nameList = [
   "meghan",
   "rebecca",
 ];
-const iconList = ["Pizza", "Hotdog", "Burger", "Fries", "Steak", "Egg"];
+const iconList = ["Pizza", "Hotdog", "Burger", "Fries", "Steak", "Egg", "Waffle", "Pie"];
 const weaponList = {
   0: { name: "Pizza Cutter", attack: 20, strongAgainst: "Pizza" },
   1: { name: "Spatula", attack: 22, strongAgainst: "Egg" },
   2: { name: "Butter Knife", attack: 25 },
   3: { name: "Steak Knife", attack: 23, strongAgainst: "Steak" },
+  4: { name: "Fry Press", attack: 24, strongAgainst: "Fries" },
+  5: { name: "Pie Server", attack: 21, strongAgainst: "Pie" },
+  6: { name: "Waffle Iron", attack: 26, strongAgainst: "Waffle" }
 };
 
 document.getElementById("createRandomPlayer").addEventListener("click", (e) => {
@@ -166,3 +169,21 @@ function beginGame() {
     document.getElementById("beginGame").innerText = "You must have 2 or more players";
   }
 }
+
+/* 
+  function eventRoller() {
+  const rollerNumber = Math.random();
+  if (rollerNumber < 0.6)
+  return 1; //this is battle 
+  else if (rollerNumber < 0.8)
+  return 2; //this is heal
+  else
+  return 3; //this is injury
+}
+
+function battleRound(players) {
+  const killedPlayer = players.pop();
+  const actions = { type: "Death", text: `${killedPlayer.name} was killed`, killedPlayer };
+  return [players, actions]
+}
+*/
