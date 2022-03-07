@@ -31,7 +31,7 @@ const weaponList = {
 document.getElementById("createRandomPlayer").addEventListener("click", (e) => {
   e.preventDefault();
   createRandomPlayer();
-  });
+});
   
 document.getElementById("addNewPlayer").addEventListener("submit", (e) => {
   e.preventDefault();
@@ -48,11 +48,20 @@ document.getElementById("beginGame").addEventListener("click", (e) => {
 });
 
 window.onload = function() {
-  document.getElementById("page2").style.display = "none";
+  document.getElementById("Page2").style.display = "none";
 }
 
 function addNewPlayer(playerName, playerIcon, playerWeapon) {
-  if (playerInfo.length < 20) {
+  if (playerInfo.length < 20 && playerName == "") {
+    const playerWeaponValue = getWeaponData(playerWeapon);
+    playerInfo.push({
+      name: getRandomName(nameList),
+      icon: playerIcon,
+      health: 100,
+      attack: 20,
+      weapon: playerWeaponValue,
+    });
+  } else if (playerInfo.length < 20) {
     const playerWeaponValue = getWeaponData(playerWeapon);
     playerInfo.push({
       name: playerName,
@@ -61,7 +70,6 @@ function addNewPlayer(playerName, playerIcon, playerWeapon) {
       attack: 20,
       weapon: playerWeaponValue,
     });
- 
   } else {
     document.getElementById("inputButton").disabled = true;
     document.getElementById("createRandomPlayer").disabled = true;
@@ -81,7 +89,7 @@ function showActivePlayers() {
                     <button onclick="removePlayer(` +
       index +
       `);"> 
-                        <img src="images/` +
+                        <img class="foodDudes" src="images/` +
       player.icon +
       `.png" width="96" height="96" alt="a delicious looking picture of food">
                     </button>
@@ -105,7 +113,10 @@ function showActivePlayers() {
       `</td>
             </tr>
             <tr>
-                <th>Weapon: </th>
+                <th>Weapon:` + 
+                  `<img class="foodDudesWeapon" src="images/`+ 
+      player.weapon.name + 
+      `.png" width="30" height="30" alt="a very dangerous looking weapon for your food to wield... somehow."></th>
                 <td>` +
       player.weapon.name +
       `</td>
@@ -160,10 +171,10 @@ function getWeaponData(weaponIndex) {
 function beginGame() {
   if (confirm("Begin the game?") && (playerInfo.length >= 2)) {
     document.getElementById("beginGame").value;
-    document.getElementById("page1").style.display = "none";
-    document.getElementById("page2").style.display = "block";
-    document.getElementById("playerCount").style.flexDirection = "column";
-    document.getElementById("playerCount").style.justifyContent = "left";
+    document.getElementById("Page1").style.display = "none";
+    document.getElementById("Page2").style.display = "block";
+    document.getElementById("playerCount").classList.add("playerCountPage2");
+    document.getElementById("body2").classList.add("bodyPage2");
   }
   else {
     document.getElementById("beginGame").innerText = "You must have 2 or more players";
