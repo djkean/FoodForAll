@@ -1,14 +1,6 @@
-/* 
-* {
-  background-color: cornflowerblue;
-}
-*/
-
 html,
 body {
   background-color: cornflowerblue;
-  margin: 0;
-  padding: 0;
 }
 
 #playerClass {
@@ -33,8 +25,8 @@ body {
 
 #beginGame {
   background-color: aliceblue;
-  padding: 5px;
-  margin: 5px 0px 5px 0px;
+  padding: 0.3125em;
+  margin: 0.3125em 0em 0.3125em 0em;
 }
 
 #playerCount {
@@ -44,10 +36,11 @@ body {
   justify-content: center;
   max-width: 100%;
   min-width: 100%;
-  min-height: 20rem;
+  min-height: 20em;
   background-color: blueviolet;
-  border: 3px solid black;
-  gap: 5px;
+  border: 0.1875em solid black;
+  gap: 0.3125em;
+  padding: 0.3125em;
 }
 
 .playerCountPage2 {
@@ -56,15 +49,15 @@ body {
 }
 
 #playerCount > div {
-  padding: 1px 10px 5px 10px;
+  padding: 0.0625em 0.625em 0.3125em 0.625em;
 }
 
 #playerCount > table {
-  padding: 0.15rem;
-  width: 12rem;
-  height: 10rem;
+  padding: 0.15em;
+  width: 12em;
+  height: 10em;
   background-color: cornflowerblue;
-  border: 2px solid black;
+  border: 0.125em solid black;
 }
 
 img.foodDudes:hover {
@@ -73,8 +66,8 @@ img.foodDudes:hover {
 
 img.foodDudesWeapon {
   position: absolute;
-  margin-left: 40px;
-  margin-top: -103px;
+  margin-left: 2.5em;
+  margin-top: -6.4375em;
 }
 
 .bodyPage2 {
