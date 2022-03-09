@@ -1,9 +1,12 @@
+/* 
 * {
   background-color: cornflowerblue;
 }
+*/
 
 html,
 body {
+  background-color: cornflowerblue;
   margin: 0;
   padding: 0;
 }
@@ -39,7 +42,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 5px;
   max-width: 100%;
   min-width: 100%;
   min-height: 20rem;
@@ -61,12 +63,13 @@ body {
   padding: 0.15rem;
   width: 12rem;
   height: 10rem;
+  background-color: cornflowerblue;
+  border: 2px solid black;
 }
 
 img.foodDudes:hover {
   filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
 }
-
 
 img.foodDudesWeapon {
   position: absolute;

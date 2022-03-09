@@ -47,28 +47,32 @@ document.getElementById("beginGame").addEventListener("click", (e) => {
   beginGame();
 });
 
+document.getElementById("beginRound").addEventListener("click", (e) => {
+  e.preventDefault();
+  playerEvent();
+  console.log({playerEvent})
+});
+
 window.onload = function() {
   document.getElementById("Page2").style.display = "none";
 }
 
 function addNewPlayer(playerName, playerIcon, playerWeapon) {
   if (playerInfo.length < 20 && playerName == "") {
-    const playerWeaponValue = getWeaponData(playerWeapon);
     playerInfo.push({
       name: getRandomName(nameList),
       icon: playerIcon,
       health: 100,
       attack: 20,
-      weapon: playerWeaponValue,
+      weapon: getWeaponData(playerWeapon),
     });
   } else if (playerInfo.length < 20) {
-    const playerWeaponValue = getWeaponData(playerWeapon);
     playerInfo.push({
       name: playerName,
       icon: playerIcon,
       health: 100,
       attack: 20,
-      weapon: playerWeaponValue,
+      weapon: getWeaponData(playerWeapon),
     });
   } else {
     document.getElementById("inputButton").disabled = true;
@@ -181,18 +185,30 @@ function beginGame() {
   }
 }
 
-/* 
-  function eventRoller() {
-  const rollerNumber = Math.random();
-  if (rollerNumber < 0.6)
+function getRandomPlayer() {
+  const rolledPlayer = Math.floor(
+  Math.random() * Object.keys(playerInfo).length);
+  return rolledPlayer;
+}
+
+function eventRoll() {
+  const rollNumber = Math.random();
+  if (rollNumber < 0.6)
   return 1; //this is battle 
-  else if (rollerNumber < 0.8)
+  else if (rollNumber < 0.8)
   return 2; //this is heal
   else
   return 3; //this is injury
 }
 
-function battleRound(players) {
+function playerEvent() { 
+  const usedPlayer = getRandomPlayer();
+  const usedEvent = eventRoll();
+  console.log({usedPlayer, usedEvent});
+  return usedPlayer, usedEvent;
+}
+
+/* function battleRound(players) {
   const killedPlayer = players.pop();
   const actions = { type: "Death", text: `${killedPlayer.name} was killed`, killedPlayer };
   return [players, actions]
