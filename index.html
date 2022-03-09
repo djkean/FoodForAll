@@ -10,8 +10,8 @@
     <div id="Page1">
       <div id="activePlayers"></div>
       <form id="addNewPlayer">
-        <input placeholder="Player Name" id="playerName" pattern="[a-zA-Z0-9]+" />
-        <select id="playerClass">
+        <input placeholder="Player Name" id="playerName" class="buttonList" pattern="[a-zA-Z0-9]+" />
+        <select id="playerClass" class="buttonList">
           <option value="Pizza">Pizza</option>
           <option value="Hotdog">Hotdog</option>
           <option value="Burger">Burger</option>
@@ -21,7 +21,7 @@
           <option value="Waffle">Waffle</option>
           <option value="Pie">Pie</option>
         </select>
-        <select id="weaponClass">
+        <select id="weaponClass" class="buttonList">
           <option value="0">Pizza Cutter</option>
           <option value="1">Spatula</option>
           <option value="2">Butter Knife</option>
@@ -30,15 +30,15 @@
           <option value="5">Pie Server</option>
           <option value="6">Waffle Iron</option>
         </select>
-        <input id="inputButton" type="submit" value="Add New Player"/>
-        <button id="createRandomPlayer">Create Random Player</button>
+        <input id="inputButton" class="buttonList" type="submit" value="Add New Player"/>
+        <button id="createRandomPlayer" class="buttonList">Create Random Player</button>
       </form>
-      <button id="beginGame">Begin Game</button>
+      <button id="beginGame" class="buttonList">Begin Game</button>
     </div>
     <div id="playerCount"></div>
     <div id="Page2">
       <span id="body2">
-        <button id="beginRound">Begin the Round!</button>
+        <button id="beginRound" class="buttonList">Begin the Round!</button>
       </span>
     </div>
     <script src="FFA.js"></script>

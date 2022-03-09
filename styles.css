@@ -3,28 +3,11 @@ body {
   background-color: cornflowerblue;
 }
 
-#playerClass {
-  background-color: aliceblue;
-}
-
-#weaponClass {
-  background-color: aliceblue;
-}
-
-#inputButton {
-  background-color: aliceblue;
-}
-
-#playerName {
-  background-color: aliceblue;
-}
-
-#createRandomPlayer {
+.buttonList {
   background-color: aliceblue;
 }
 
 #beginGame {
-  background-color: aliceblue;
   padding: 0.3125em;
   margin: 0.3125em 0em 0.3125em 0em;
 }
