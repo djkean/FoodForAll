@@ -1,10 +1,34 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+--baseBackground: rgb(100, 149, 237);
+--playerBackground: rgb(138, 43, 226);
+--buttonBackground: rgb(240, 248, 255);
+}
+
 html,
 body {
-  background-color: cornflowerblue;
+  height: 100%;
+  background-color: var(--baseBackground);
+}
+
+body {
+  margin: 0;
+  padding: 1em;
+}
+
+.bodyPage2 {
+display: flex;
 }
 
 .buttonList {
-  background-color: aliceblue;
+  background-color: var(--buttonBackground);
+}
+
+button {
+  background-color: var(--buttonBackground);
 }
 
 #beginGame {
@@ -17,18 +41,16 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 100%;
-  min-width: 100%;
   min-height: 20em;
-  background-color: blueviolet;
+  background-color: var(--playerBackground);
   border: 0.1875em solid black;
   gap: 0.3125em;
   padding: 0.3125em;
 }
 
-.playerCountPage2 {
-  flex-direction: column;
-  justify-content: left;
+#playerCount tbody {
+height: 10rem;
+width: 6rem;
 }
 
 #playerCount > div {
@@ -39,8 +61,20 @@ body {
   padding: 0.15em;
   width: 12em;
   height: 10em;
-  background-color: cornflowerblue;
+  background-color: var(--baseBackground);
   border: 0.125em solid black;
+}
+
+.playerCountPage1 {
+  display: flex;
+  height: 92.5%;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.playerCountPage2 {
+  flex-direction: column;
+  justify-content: left;
 }
 
 img.foodDudes:hover {
@@ -48,9 +82,8 @@ img.foodDudes:hover {
 }
 
 img.foodDudesWeapon {
-  position: absolute;
-  margin-left: 2.5em;
-  margin-top: -6.4375em;
+  margin-left: -1em;
+  margin-top: 6em;
 }
 
 .bodyPage2 {

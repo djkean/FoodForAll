@@ -96,6 +96,9 @@ function showActivePlayers() {
                         <img class="foodDudes" src="images/` +
       player.icon +
       `.png" width="96" height="96" alt="a delicious looking picture of food">
+      <img class="foodDudesWeapon" src="images/`+ 
+      player.weapon.name + 
+      `.png" width="30" height="30" alt="a very dangerous looking weapon for your food to wield... somehow."></th>
                     </button>
                 </th>
             </tr>
@@ -107,7 +110,7 @@ function showActivePlayers() {
             <tr>
                 <th>Health: </th>
                 <td>` +
-      player.health +
+      player.health + 
       `</td>
             </tr>
             <tr>
@@ -117,11 +120,8 @@ function showActivePlayers() {
       `</td>
             </tr>
             <tr>
-                <th>Weapon:` + 
-                  `<img class="foodDudesWeapon" src="images/`+ 
-      player.weapon.name + 
-      `.png" width="30" height="30" alt="a very dangerous looking weapon for your food to wield... somehow."></th>
-                <td>` +
+                <th>Weapon: 
+                  <td>` + 
       player.weapon.name +
       `</td>
             </tr>
@@ -177,8 +177,9 @@ function beginGame() {
     document.getElementById("beginGame").value;
     document.getElementById("Page1").style.display = "none";
     document.getElementById("Page2").style.display = "block";
+    document.getElementById("playerCount").classList.remove("playerCountPage1");
     document.getElementById("playerCount").classList.add("playerCountPage2");
-    document.getElementById("body2").classList.add("bodyPage2");
+    document.body.classList.add("bodyPage2");
   }
   else {
     document.getElementById("beginGame").innerText = "You must have 2 or more players";
