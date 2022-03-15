@@ -187,8 +187,9 @@ function beginGame() {
 }
 
 function getRandomPlayer() {
-  const rolledPlayer = Math.floor(
+  const rolledPlayerIndex = Math.floor(
   Math.random() * Object.keys(playerInfo).length);
+  const rolledPlayer = playerInfo.splice(rolledPlayerIndex, 1) [0];
   return rolledPlayer;
 }
 
@@ -203,10 +204,28 @@ function eventRoll() {
 }
 
 function playerEvent() { 
-  const usedPlayer = getRandomPlayer();
-  const usedEvent = eventRoll();
-  console.log({usedPlayer, usedEvent});
-  return usedPlayer, usedEvent;
+  const player = getRandomPlayer();
+  const event = eventRoll();
+  if (event == 1) {
+    const enemy = getRandomPlayer();
+    console.log("Battle! ", { player, enemy });
+    playerInfo.push(player);
+  }
+  else if (event == 2) {
+    player.health += 20;
+    console.log("Heal ", { player });
+    return player.health;
+  }
+  else {
+    player.health -= 20;
+    console.log("Injury ", { player });
+    return player.health;
+  }
+  console.log({ player, event });
+
+  showActivePlayers();
+
+  return player, event;
 }
 
 /* function battleRound(players) {
