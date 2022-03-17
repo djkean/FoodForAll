@@ -214,12 +214,14 @@ function playerEvent() {
   else if (event == 2) {
     player.health += 20;
     console.log("Heal ", { player });
-    return player.health;
+    playerInfo.push(player);
+    console.log(player.health);
   }
   else {
     player.health -= 20;
     console.log("Injury ", { player });
-    return player.health;
+    playerInfo.push(player);
+    console.log(player.health);
   }
   console.log({ player, event });
 
