@@ -208,22 +208,25 @@ function playerEvent() {
   const event = eventRoll();
   if (event == 1) {
     const enemy = getRandomPlayer();
-    console.log("Battle! ", { player, enemy });
+    player.health -= enemy.weapon.attack;
+    enemy.health -= player.weapon.attack;
     playerInfo.push(player);
+    document.getElementById("eventText").textContent += 
+    player.name + " and " + enemy.name + " have battled. " + player.name + " has lost " + enemy.weapon.attack + 
+    " health, and " + enemy.name + " has lost " + player.weapon.attack + " health." + "\r\n";
   }
   else if (event == 2) {
     player.health += 20;
-    console.log("Heal ", { player });
     playerInfo.push(player);
-    console.log(player.health);
+    document.getElementById("eventText").textContent += 
+    player.name + " rests and heals up to " + player.health + " health.";
   }
   else {
     player.health -= 20;
-    console.log("Injury ", { player });
     playerInfo.push(player);
-    console.log(player.health);
+    document.getElementById("eventText").textContent += 
+    player.name + " sustained an injury and has fallen to " + player.health + " health.";
   }
-  console.log({ player, event });
 
   showActivePlayers();
 

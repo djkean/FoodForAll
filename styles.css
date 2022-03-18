@@ -23,6 +23,10 @@ body {
 display: flex;
 }
 
+.eventText {
+  display: flex;
+}
+
 .buttonList {
   background-color: var(--buttonBackground);
 }
