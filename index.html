@@ -10,7 +10,12 @@
     <div id="Page1">
       <div id="activePlayers"></div>
       <form id="addNewPlayer">
-        <input placeholder="Player Name" id="playerName" class="buttonList" pattern="[a-zA-Z0-9]+" />
+        <input
+          placeholder="Player Name"
+          id="playerName"
+          class="buttonList"
+          pattern="[a-zA-Z0-9]+"
+        />
         <select id="playerClass" class="buttonList">
           <option value="Pizza">Pizza</option>
           <option value="Hotdog">Hotdog</option>
@@ -30,8 +35,15 @@
           <option value="5">Pie Server</option>
           <option value="6">Waffle Iron</option>
         </select>
-        <input id="inputButton" class="buttonList" type="submit" value="Add New Player"/>
-        <button id="createRandomPlayer" class="buttonList">Create Random Player</button>
+        <input
+          id="inputButton"
+          class="buttonList"
+          type="submit"
+          value="Add New Player"
+        />
+        <button id="createRandomPlayer" class="buttonList">
+          Create Random Player
+        </button>
       </form>
       <button id="beginGame" class="buttonList">Begin Game</button>
     </div>
@@ -41,6 +53,7 @@
         <button id="beginRound" class="buttonList">Begin the Round!</button>
       </span>
       <div id="eventText"></div>
+      <div id="actionLog"></div>
     </div>
     <script src="FFA.js"></script>
   </body>
