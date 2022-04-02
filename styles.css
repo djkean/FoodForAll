@@ -4,9 +4,9 @@
 }
 
 :root {
---baseBackground: rgb(100, 149, 237);
---playerBackground: rgb(138, 43, 226);
---buttonBackground: rgb(240, 248, 255);
+  --baseBackground: rgb(100, 149, 237);
+  --playerBackground: rgb(138, 43, 226);
+  --buttonBackground: rgb(240, 248, 255);
 }
 
 html,
@@ -21,7 +21,7 @@ body {
 }
 
 .bodyPage2 {
-display: flex;
+  display: flex;
 }
 
 .eventText {
@@ -44,8 +44,6 @@ button {
 #playerCount {
   overflow-y: scroll;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   min-height: 20em;
   background-color: var(--playerBackground);
   border: 0.1875em solid black;
@@ -54,8 +52,8 @@ button {
 }
 
 #playerCount tbody {
-height: 10rem;
-width: 6rem;
+  height: 10rem;
+  width: 6rem;
 }
 
 #playerCount > div {
@@ -72,6 +70,8 @@ width: 6rem;
 
 .playerCountPage1 {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   height: 92.5%;
   max-width: 100%;
   min-width: 100%;
@@ -80,10 +80,12 @@ width: 6rem;
 .playerCountPage2 {
   flex-direction: column;
   justify-content: left;
+  min-width: 13.7rem;
 }
 
 img.foodDudes:hover {
-  filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+  filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg)
+    saturate(600%) contrast(0.8);
 }
 
 img.foodDudesWeapon {
@@ -93,5 +95,20 @@ img.foodDudesWeapon {
 
 .bodyPage2 {
   display: flex;
-  flex-wrap: wrap;
+}
+
+.action {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  height: 10rem;
+  text-align: center;
+}
+
+.actionImage {
+  display: flex;
+  justify-content: space-around;
+}
+
+#Page2 {
 }

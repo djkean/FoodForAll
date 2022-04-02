@@ -18,7 +18,16 @@ const nameList = [
   "meghan",
   "rebecca",
 ];
-const iconList = ["Pizza", "Hotdog", "Burger", "Fries", "Steak", "Egg", "Waffle", "Pie"];
+const iconList = [
+  "Pizza",
+  "Hotdog",
+  "Burger",
+  "Fries",
+  "Steak",
+  "Egg",
+  "Waffle",
+  "Pie",
+];
 const weaponList = {
   0: { name: "Pizza Cutter", attack: 20, strongAgainst: "Pizza" },
   1: { name: "Spatula", attack: 22, strongAgainst: "Egg" },
@@ -26,14 +35,14 @@ const weaponList = {
   3: { name: "Steak Knife", attack: 23, strongAgainst: "Steak" },
   4: { name: "Fry Press", attack: 24, strongAgainst: "Fries" },
   5: { name: "Pie Server", attack: 21, strongAgainst: "Pie" },
-  6: { name: "Waffle Iron", attack: 26, strongAgainst: "Waffle" }
+  6: { name: "Waffle Iron", attack: 26, strongAgainst: "Waffle" },
 };
 
 document.getElementById("createRandomPlayer").addEventListener("click", (e) => {
   e.preventDefault();
   createRandomPlayer();
 });
-  
+
 document.getElementById("addNewPlayer").addEventListener("submit", (e) => {
   e.preventDefault();
   const playerName = document.getElementById("playerName").value;
@@ -51,7 +60,7 @@ document.getElementById("beginGame").addEventListener("click", (e) => {
 document.getElementById("beginRound").addEventListener("click", (e) => {
   e.preventDefault();
   playerEvent();
-  console.log({playerEvent})
+  console.log({ playerEvent });
 });
 
 document.getElementById("nextRound").addEventListener("click", (e) => {
@@ -83,7 +92,8 @@ function addNewPlayer(playerName, playerIcon, playerWeapon) {
   } else {
     document.getElementById("inputButton").disabled = true;
     document.getElementById("createRandomPlayer").disabled = true;
-    document.getElementById("createRandomPlayer").innerText = "Max Players (20) Achieved";
+    document.getElementById("createRandomPlayer").innerText =
+      "Max Players (20) Achieved";
   }
 }
 // This is for displaying players. Uses a table to proportionally show players and their values
@@ -116,7 +126,7 @@ function showActivePlayers() {
             <tr>
                 <th>Health: </th>
                 <td>` +
-      player.health + 
+      player.health +
       `</td>
             </tr>
             <tr>
@@ -127,7 +137,7 @@ function showActivePlayers() {
             </tr>
             <tr>
                 <th>Weapon: 
-                  <td>` + 
+                  <td>` +
       player.weapon.name +
       `</td>
             </tr>
@@ -139,7 +149,8 @@ function removePlayer(index) {
   if (confirm("Delete this player?")) {
     document.getElementById("inputButton").disabled = false;
     document.getElementById("createRandomPlayer").disabled = false;
-    document.getElementById("createRandomPlayer").innerText = "Create Random Player";
+    document.getElementById("createRandomPlayer").innerText =
+      "Create Random Player";
     playerInfo.splice(index, 1);
     showActivePlayers();
   }
@@ -179,23 +190,24 @@ function getWeaponData(weaponIndex) {
 }
 //Function handles displaying or hiding different html values to transition to "Page2" of the game
 function beginGame() {
-  if (confirm("Begin the game?") && (playerInfo.length >= 2)) {
+  if (confirm("Begin the game?") && playerInfo.length >= 2) {
     document.getElementById("beginGame").value;
     document.getElementById("Page1").style.display = "none";
     document.getElementById("Page2").style.display = "block";
     document.getElementById("playerCount").classList.remove("playerCountPage1");
     document.getElementById("playerCount").classList.add("playerCountPage2");
     document.body.classList.add("bodyPage2");
-  }
-  else {
-    document.getElementById("beginGame").innerText = "You must have 2 or more players";
+  } else {
+    document.getElementById("beginGame").innerText =
+      "You must have 2 or more players";
   }
 }
 //This chooses from existing players and the rolled player is used for an event
 function getRandomPlayer() {
   const rolledPlayerIndex = Math.floor(
-  Math.random() * Object.keys(playerInfo).length);
-  const rolledPlayer = playerInfo.splice(rolledPlayerIndex, 1) [0];
+    Math.random() * Object.keys(playerInfo).length
+  );
+  const rolledPlayer = playerInfo.splice(rolledPlayerIndex, 1)[0];
   return rolledPlayer;
 }
 //This function is a random number generator. The number determines the event used
@@ -323,6 +335,12 @@ function nextRound() {
   }
 
 /*}*/
+
+// TODO once you get to one single player, you display the third page
+// for now the third page can just be a picture of them, with the text
+// '<player> wins!'
+//
+// you can always expand on this later
 
 /* function battleRound(players) {
   const killedPlayer = players.pop();
