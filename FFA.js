@@ -1,5 +1,5 @@
-const playerInfo = [];
-const playerNext = [];
+let playerInfo = [];
+let playerNext = [];
 const nameList = [
   "bob",
   "joe",
@@ -57,15 +57,21 @@ document.getElementById("beginGame").addEventListener("click", (e) => {
   beginGame();
 });
 
-document.getElementById("beginRound").addEventListener("click", (e) => {
+document.getElementById("beginRound").addEventListener("click", async (e) => {
   e.preventDefault();
-  playerEvent();
-  console.log({ playerEvent });
+  const playerInfoLength = playerInfo.length
+  for (let i = 0; i < playerInfoLength; i++) {
+    playerEvent();
+  }
 });
 
 document.getElementById("nextRound").addEventListener("click", (e) => {
   e.preventDefault();
   nextRound();
+  const actionLength = document.getElementsByClassName("actionContainer")
+  while (actionLength.length > 0) {
+    actionLength[0].remove();
+  }
 })
 
 window.onload = function() {
@@ -213,7 +219,7 @@ function getRandomPlayer() {
 //This function is a random number generator. The number determines the event used
 function eventRoll() {
   const rollNumber = Math.random();
-  if (playerInfo.length === 1) {
+  if (playerInfo.length < 2) {
     if (rollNumber < 0.5)
     return 2; //this is heal
     else 
@@ -230,6 +236,7 @@ function eventRoll() {
 }
 //Handles the "battle" event where two players fight each other
 function createBattleAction(player, enemy) {
+  console.log(player, enemy);
   player.health -= enemy.weapon.attack;
   enemy.health -= player.weapon.attack;
   if (player.health > 0) {
@@ -271,6 +278,7 @@ function createInjuryAction(player) {
 //The function uses a switch case to handle visual display of events as they happen, via text and images
 function renderAction(action) {
   const container = document.createElement("div");
+  container.className = "actionContainer";
   container.classList.add("action");
 
   const imageContainer = document.createElement("div");
@@ -302,13 +310,15 @@ function renderAction(action) {
   document.getElementById("actionLog").appendChild(container);
 }
 //Tells the game what to do with the player and event when they are rolled
-function playerEvent() { 
+  function playerEvent() { 
   const player = getRandomPlayer();
   const event = eventRoll();
+  console.log(playerInfo, event)
   let action;
   if (event == 1) {
     const enemy = getRandomPlayer();
     action = createBattleAction(player, enemy);
+    console.log(player, enemy);
   }
   else if (event == 2) {
     action = createHealAction(player);
@@ -325,26 +335,13 @@ function playerEvent() {
   return player, event;
 }
 //Once complete, this function will push the existing surviving players back into the array that lets them use actions again
-function nextRound() {
-/*  if (playerInfo.length > 0)
-  alert("Not everyone has done something yet!");
-  else { */
-    playerInfo.push(playerNext);
+function nextRound() { 
+  if (playerInfo.length + playerNext.length <= 1 ) {
+  alert("Game Over!"); }
+  else {
+    playerInfo = playerNext;
     showActivePlayers();
+    playerNext = [];
     console.log({playerInfo}, {playerNext})
   }
-
-/*}*/
-
-// TODO once you get to one single player, you display the third page
-// for now the third page can just be a picture of them, with the text
-// '<player> wins!'
-//
-// you can always expand on this later
-
-/* function battleRound(players) {
-  const killedPlayer = players.pop();
-  const actions = { type: "Death", text: `${killedPlayer.name} was killed`, killedPlayer };
-  return [players, actions]
 }
-*/
