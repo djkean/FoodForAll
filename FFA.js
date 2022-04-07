@@ -56,27 +56,29 @@ document.getElementById("beginGame").addEventListener("click", (e) => {
   e.preventDefault();
   beginGame();
 });
-
+//Loops until every player has done something this round
 document.getElementById("beginRound").addEventListener("click", async (e) => {
   e.preventDefault();
-  const playerInfoLength = playerInfo.length
+  const playerInfoLength = playerInfo.length;
   for (let i = 0; i < playerInfoLength; i++) {
     playerEvent();
   }
 });
-
+/* When starting a new round this clears the past round events in order to make room for the new one
+In the future the "history" of the round(s) will be saved in order to show all the events that ocurred
+in chronological order at the end of the game. */
 document.getElementById("nextRound").addEventListener("click", (e) => {
   e.preventDefault();
   nextRound();
-  const actionLength = document.getElementsByClassName("actionContainer")
+  const actionLength = document.getElementsByClassName("actionContainer");
   while (actionLength.length > 0) {
     actionLength[0].remove();
   }
-})
+});
 
-window.onload = function() {
+window.onload = function () {
   document.getElementById("Page2").style.display = "none";
-}
+};
 // This the the function that handles manually creating new players
 function addNewPlayer(playerName, playerIcon, playerWeapon) {
   if (playerInfo.length < 20 && playerName == "") {
@@ -118,8 +120,8 @@ function showActivePlayers() {
                         <img class="foodDudes" src="images/` +
       player.icon +
       `.png" width="96" height="96" alt="a delicious looking picture of food">
-      <img class="foodDudesWeapon" src="images/`+ 
-      player.weapon.name + 
+      <img class="foodDudesWeapon" src="images/` +
+      player.weapon.name +
       `.png" width="30" height="30" alt="a very dangerous looking weapon for your food"></th>
                     </button>
                 </th>
@@ -220,18 +222,12 @@ function getRandomPlayer() {
 function eventRoll() {
   const rollNumber = Math.random();
   if (playerInfo.length < 2) {
-    if (rollNumber < 0.5)
-    return 2; //this is heal
-    else 
-    return 3; //this is injury
-  }
-  else {
-    if (rollNumber < 0.6)
-    return 1; //this is battle 
-    else if (rollNumber < 0.8)
-    return 2; //this is heal
-    else
-    return 3; //this is injury
+    if (rollNumber < 0.5) return 2; //this is heal
+    else return 3; //this is injury
+  } else {
+    if (rollNumber < 0.6) return 1; //this is battle
+    else if (rollNumber < 0.8) return 2; //this is heal
+    else return 3; //this is injury
   }
 }
 //Handles the "battle" event where two players fight each other
@@ -248,9 +244,9 @@ function createBattleAction(player, enemy) {
   return {
     type: "Battle",
     player,
-    enemy, 
+    enemy,
     text: `${player.name} attacks with ${player.weapon.name}. 
-    ${enemy.name} fights back with ${enemy.weapon.name}`, 
+    ${enemy.name} fights back with ${enemy.weapon.name}`,
   };
 }
 //Handles the "heal" event
@@ -260,7 +256,7 @@ function createHealAction(player) {
   return {
     type: "Heal",
     player,
-    text: `${player.name} took a moment to rest and healed to ${player.health} health.`, 
+    text: `${player.name} took a moment to rest and healed to ${player.health} health.`,
   };
 }
 //Handles the "injury" event
@@ -290,7 +286,7 @@ function renderAction(action) {
 
   switch (action.type) {
     case "Battle":
-      const enemyImage = document.createElement("img")
+      const enemyImage = document.createElement("img");
       enemyImage.src = `images/${action.enemy.icon}.png`;
       imageContainer.appendChild(enemyImage);
       break;
@@ -310,38 +306,37 @@ function renderAction(action) {
   document.getElementById("actionLog").appendChild(container);
 }
 //Tells the game what to do with the player and event when they are rolled
-  function playerEvent() { 
+function playerEvent() {
   const player = getRandomPlayer();
   const event = eventRoll();
-  console.log(playerInfo, event)
+  console.log(playerInfo, event);
   let action;
   if (event == 1) {
     const enemy = getRandomPlayer();
     action = createBattleAction(player, enemy);
     console.log(player, enemy);
-  }
-  else if (event == 2) {
+  } else if (event == 2) {
     action = createHealAction(player);
-  }
-  else {
+  } else {
     action = createInjuryAction(player);
   }
   renderAction(action);
   console.log(action);
-  console.log({playerInfo});
-  console.log({playerNext});
+  console.log({ playerInfo });
+  console.log({ playerNext });
   showActivePlayers();
 
   return player, event;
 }
-//Once complete, this function will push the existing surviving players back into the array that lets them use actions again
-function nextRound() { 
-  if (playerInfo.length + playerNext.length <= 1 ) {
-  alert("Game Over!"); }
-  else {
+/* This function will pushes the existing surviving players back into the array that lets them use actions again
+If 0 or 1 player(s) are left the game is over. */
+function nextRound() {
+  if (playerInfo.length + playerNext.length <= 1) {
+    alert("Game Over!");
+  } else {
     playerInfo = playerNext;
     showActivePlayers();
     playerNext = [];
-    console.log({playerInfo}, {playerNext})
+    console.log({ playerInfo }, { playerNext });
   }
 }
