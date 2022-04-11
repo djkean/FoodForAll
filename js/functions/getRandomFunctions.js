@@ -9,11 +9,11 @@ export const getRandomIcon = () => {
   return Math.floor(Math.random() * iconList.length);
 }
 //Uses object.keys to get a random weapon from the object list
-export const  getRandomWeapon = () => {
+export const getRandomWeapon = () => {
   const randomPlayerWeapon = Math.floor(
     Math.random() * Object.keys(weaponList).length
   );
-  const weaponGrab = getWeaponData(randomPlayerWeapon);
+  const weaponGrab = weaponList[randomPlayerWeapon.toString()];
   return weaponGrab;
 }
 //Uses object.keys .find to get all the values from a weapon via the object list

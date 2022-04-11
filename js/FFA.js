@@ -1,5 +1,5 @@
-import { playerInfo, playerNext, nameList, iconList, weaponList } from "./data/dataLists.js"
-import { getRandomName, getRandomIcon, getRandomWeapon, getWeaponData, getRandomPlayer } from "./functions/getRandomFunctions.js"
+import { playerInfo, playerNext, nameList, iconList, weaponList, addNewPlayer, showActivePlayers, nextRound } from "./data/dataLists.js"
+import { getRandomName, getRandomIcon, getRandomWeapon, getRandomPlayer } from "./functions/getRandomFunctions.js"
 import { createBattleAction, createHealAction, createInjuryAction } from "./functions/createActionFunctions.js"
 
 document.getElementById("createRandomPlayer").addEventListener("click", (e) => {
@@ -43,80 +43,6 @@ document.getElementById("nextRound").addEventListener("click", (e) => {
 window.onload = function () {
   document.getElementById("Page2").style.display = "none";
 };
-// This the the function that handles manually creating new players
-function addNewPlayer(playerName, playerIcon, playerWeapon) {
-  if (playerInfo.length < 20 && playerName == "") {
-    playerInfo.push({
-      name: getRandomName(nameList),
-      icon: playerIcon,
-      health: 100,
-      attack: 20,
-      weapon: getWeaponData(playerWeapon),
-    });
-  } else if (playerInfo.length < 20) {
-    playerInfo.push({
-      name: playerName,
-      icon: playerIcon,
-      health: 100,
-      attack: 20,
-      weapon: getWeaponData(playerWeapon),
-    });
-  } else {
-    document.getElementById("inputButton").disabled = true;
-    document.getElementById("createRandomPlayer").disabled = true;
-    document.getElementById("createRandomPlayer").innerText =
-      "Max Players (20) Achieved";
-  }
-}
-// This is for displaying players. Uses a table to proportionally show players and their values
-function showActivePlayers() {
-  const playerCount = document.getElementById("playerCount");
-  playerCount.innerHTML = " ";
-  for (const [index, player] of playerInfo.entries()) {
-    playerCount.innerHTML +=
-      `
-        <table>
-            <tr>
-                <th colspan="2">
-                    <button onclick="removePlayer(` +
-      index +
-      `);"> 
-                        <img class="foodDudes" src="images/` +
-      player.icon +
-      `.png" width="96" height="96" alt="a delicious looking picture of food">
-      <img class="foodDudesWeapon" src="images/` +
-      player.weapon.name +
-      `.png" width="30" height="30" alt="a very dangerous looking weapon for your food"></th>
-                    </button>
-                </th>
-            </tr>
-            <tr>
-                <th colspan="2">` +
-      player.name +
-      `</th>
-            </tr>
-            <tr>
-                <th>Health: </th>
-                <td>` +
-      player.health +
-      `</td>
-            </tr>
-            <tr>
-                <th>Attack: </th>
-                <td>` +
-      player.weapon.attack +
-      `</td>
-            </tr>
-            <tr>
-                <th>Weapon: 
-                  <td>` +
-      player.weapon.name +
-      `</td>
-            </tr>
-        </table> `;
-  }
-}
-
 function removePlayer(index) {
   if (confirm("Delete this player?")) {
     document.getElementById("inputButton").disabled = false;
@@ -218,16 +144,4 @@ function playerEvent() {
   showActivePlayers();
 
   return player, event;
-}
-/* This function will pushes the existing surviving players back into the array that lets them use actions again
-If 0 or 1 player(s) are left the game is over. */
-function nextRound() {
-  if (playerInfo.length + playerNext.length <= 1) {
-    alert("Game Over!");
-  } else {
-    playerInfo = playerNext;
-    showActivePlayers();
-    playerNext = [];
-    console.log({ playerInfo }, { playerNext });
-  }
 }
