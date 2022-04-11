@@ -11,7 +11,8 @@ document.getElementById("addNewPlayer").addEventListener("submit", (e) => {
   e.preventDefault();
   const playerName = document.getElementById("playerName").value;
   const playerIcon = document.getElementById("playerClass").value;
-  const playerWeapon = document.getElementById("weaponClass").value;
+  const playerWeaponKey = document.getElementById("weaponClass").value;
+  const playerWeapon = weaponList[playerWeaponKey.toString()];
   addNewPlayer(playerName, playerIcon, playerWeapon);
   showActivePlayers();
 });
