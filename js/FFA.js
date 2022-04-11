@@ -1,42 +1,6 @@
-let playerInfo = [];
-let playerNext = [];
-const nameList = [
-  "bob",
-  "joe",
-  "mark",
-  "frank",
-  "billy",
-  "steve",
-  "fred",
-  "eggbert",
-  "karen",
-  "lisa",
-  "ashley",
-  "lucy",
-  "daisy",
-  "amy",
-  "meghan",
-  "rebecca",
-];
-const iconList = [
-  "Pizza",
-  "Hotdog",
-  "Burger",
-  "Fries",
-  "Steak",
-  "Egg",
-  "Waffle",
-  "Pie",
-];
-const weaponList = {
-  0: { name: "Pizza Cutter", attack: 20, strongAgainst: "Pizza" },
-  1: { name: "Spatula", attack: 22, strongAgainst: "Egg" },
-  2: { name: "Butter Knife", attack: 25 },
-  3: { name: "Steak Knife", attack: 23, strongAgainst: "Steak" },
-  4: { name: "Fry Press", attack: 24, strongAgainst: "Fries" },
-  5: { name: "Pie Server", attack: 21, strongAgainst: "Pie" },
-  6: { name: "Waffle Iron", attack: 26, strongAgainst: "Waffle" },
-};
+import { playerInfo, playerNext, nameList, iconList, weaponList } from "./data/dataLists.js"
+import { getRandomName, getRandomIcon, getRandomWeapon, getWeaponData, getRandomPlayer } from "./functions/getRandomFunctions.js"
+import { createBattleAction, createHealAction, createInjuryAction } from "./functions/createActionFunctions.js"
 
 document.getElementById("createRandomPlayer").addEventListener("click", (e) => {
   e.preventDefault();
@@ -172,30 +136,6 @@ function createRandomPlayer(createAmountPlaceholder = null) {
   showActivePlayers();
 }
 
-function getRandomName() {
-  return Math.floor(Math.random() * nameList.length);
-}
-
-function getRandomIcon() {
-  return Math.floor(Math.random() * iconList.length);
-}
-//Uses object.keys to get a random weapon from the object list
-function getRandomWeapon() {
-  const randomPlayerWeapon = Math.floor(
-    Math.random() * Object.keys(weaponList).length
-  );
-  const weaponGrab = getWeaponData(randomPlayerWeapon);
-  return weaponGrab;
-}
-//Uses object.keys .find to get all the values from a weapon via the object list
-function getWeaponData(weaponIndex) {
-  Object.keys(weaponList).find((key) => {
-    if (key == weaponIndex) {
-      weaponData = weaponList[key];
-    }
-  });
-  return weaponData;
-}
 //Function handles displaying or hiding different html values to transition to "Page2" of the game
 function beginGame() {
   if (confirm("Begin the game?") && playerInfo.length >= 2) {
@@ -210,14 +150,6 @@ function beginGame() {
       "You must have 2 or more players";
   }
 }
-//This chooses from existing players and the rolled player is used for an event
-function getRandomPlayer() {
-  const rolledPlayerIndex = Math.floor(
-    Math.random() * Object.keys(playerInfo).length
-  );
-  const rolledPlayer = playerInfo.splice(rolledPlayerIndex, 1)[0];
-  return rolledPlayer;
-}
 //This function is a random number generator. The number determines the event used
 function eventRoll() {
   const rollNumber = Math.random();
@@ -229,47 +161,6 @@ function eventRoll() {
     else if (rollNumber < 0.8) return 2; //this is heal
     else return 3; //this is injury
   }
-}
-//Handles the "battle" event where two players fight each other
-function createBattleAction(player, enemy) {
-  console.log(player, enemy);
-  player.health -= enemy.weapon.attack;
-  enemy.health -= player.weapon.attack;
-  if (player.health > 0) {
-    playerNext.push(player);
-  }
-  if (enemy.health > 0) {
-    playerNext.push(enemy);
-  }
-  return {
-    type: "Battle",
-    player,
-    enemy,
-    text: `${player.name} attacks with ${player.weapon.name}. 
-    ${enemy.name} fights back with ${enemy.weapon.name}`,
-  };
-}
-//Handles the "heal" event
-function createHealAction(player) {
-  player.health += 20;
-  playerNext.push(player);
-  return {
-    type: "Heal",
-    player,
-    text: `${player.name} took a moment to rest and healed to ${player.health} health.`,
-  };
-}
-//Handles the "injury" event
-function createInjuryAction(player) {
-  player.health -= 20;
-  if (player.health > 0) {
-    playerNext.push(player);
-  }
-  return {
-    type: "Injury",
-    player,
-    text: `${player.name} sustained an injury and has fallen to ${player.health} health.`,
-  };
 }
 //The function uses a switch case to handle visual display of events as they happen, via text and images
 function renderAction(action) {
