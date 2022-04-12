@@ -1,4 +1,4 @@
-import { playerInfo, playerNext, nameList, iconList, weaponList, addNewPlayer, showActivePlayers, nextRound } from "./data/dataLists.js"
+import { playerInfo, playerNext, nameList, iconList, weaponList, addNewPlayer, showPlayers, nextRound } from "./data/playerData.js"
 import { getRandomName, getRandomIcon, getRandomWeapon, getRandomPlayer } from "./functions/getRandomFunctions.js"
 import { createBattleAction, createHealAction, createInjuryAction } from "./functions/createActionFunctions.js"
 
@@ -14,20 +14,23 @@ document.getElementById("addNewPlayer").addEventListener("submit", (e) => {
   const playerWeaponKey = document.getElementById("weaponClass").value;
   const playerWeapon = weaponList[playerWeaponKey.toString()];
   addNewPlayer(playerName, playerIcon, playerWeapon);
-  showActivePlayers();
+  showPlayers();
 });
 
 document.getElementById("beginGame").addEventListener("click", (e) => {
   e.preventDefault();
+  document.getElementById("nextRound").style.display = "none";
   beginGame();
 });
 //Loops until every player has done something this round
 document.getElementById("beginRound").addEventListener("click", async (e) => {
   e.preventDefault();
-  const playerInfoLength = playerInfo.length;
-  for (let i = 0; i < playerInfoLength; i++) {
+  document.getElementById("nextRound").style.display = "block";
+  document.getElementById("beginRound").style.display = "none";
+while (playerInfo.length >= 1) {
     playerEvent();
   }
+  showPlayers();
 });
 /* When starting a new round this clears the past round events in order to make room for the new one
 In the future the "history" of the round(s) will be saved in order to show all the events that ocurred
@@ -35,6 +38,8 @@ in chronological order at the end of the game. */
 document.getElementById("nextRound").addEventListener("click", (e) => {
   e.preventDefault();
   nextRound();
+  document.getElementById("beginRound").style.display = "block";
+  document.getElementById("nextRound").style.display = "none";
   const actionLength = document.getElementsByClassName("actionContainer");
   while (actionLength.length > 0) {
     actionLength[0].remove();
@@ -44,23 +49,14 @@ document.getElementById("nextRound").addEventListener("click", (e) => {
 window.onload = function () {
   document.getElementById("Page2").style.display = "none";
 };
-function removePlayer(index) {
-  if (confirm("Delete this player?")) {
-    document.getElementById("inputButton").disabled = false;
-    document.getElementById("createRandomPlayer").disabled = false;
-    document.getElementById("createRandomPlayer").innerText =
-      "Create Random Player";
-    playerInfo.splice(index, 1);
-    showActivePlayers();
-  }
-}
+
 //Creates a player by randomizing name, icon, and weapon
 function createRandomPlayer(createAmountPlaceholder = null) {
   const randomPlayerName = nameList[getRandomName()];
   const randomPlayerIcon = iconList[getRandomIcon()];
   const randomPlayerWeapon = getRandomWeapon();
   addNewPlayer(randomPlayerName, randomPlayerIcon, randomPlayerWeapon);
-  showActivePlayers();
+  showPlayers();
 }
 
 //Function handles displaying or hiding different html values to transition to "Page2" of the game
@@ -127,22 +123,18 @@ function renderAction(action) {
 function playerEvent() {
   const player = getRandomPlayer();
   const event = eventRoll();
-  console.log(playerInfo, event);
   let action;
   if (event == 1) {
     const enemy = getRandomPlayer();
     action = createBattleAction(player, enemy);
-    console.log(player, enemy);
   } else if (event == 2) {
     action = createHealAction(player);
   } else {
     action = createInjuryAction(player);
   }
   renderAction(action);
-  console.log(action);
-  console.log({ playerInfo });
-  console.log({ playerNext });
-  showActivePlayers();
+  console.log(action, playerInfo, playerNext);
+  showPlayers();
 
   return player, event;
 }

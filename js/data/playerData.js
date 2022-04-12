@@ -46,7 +46,6 @@ export const weaponList = {
 // This the the function that handles manually creating new players
 export const addNewPlayer = (playerName, playerIcon, playerWeapon) => {
   if (playerInfo.length < 20 && playerName == "") {
-    console.log(playerName, playerIcon, playerWeapon);
     playerInfo.push({
       name: getRandomName(nameList),
       icon: playerIcon,
@@ -70,7 +69,7 @@ export const addNewPlayer = (playerName, playerIcon, playerWeapon) => {
   }
 }
 // This is for displaying players. Uses a table to proportionally show players and their values
-export const showActivePlayers = () => {
+export const showPlayers = () => {
   const playerCount = document.getElementById("playerCount");
   playerCount.innerHTML = " ";
   for (const [index, player] of playerInfo.entries()) {
@@ -117,17 +116,24 @@ export const showActivePlayers = () => {
         </table> `;
   }
 }
+export const removePlayer = (index) => {
+  if (confirm("Delete this player?")) {
+    document.getElementById("inputButton").disabled = false;
+    document.getElementById("createRandomPlayer").disabled = false;
+    document.getElementById("createRandomPlayer").innerText =
+      "Create Random Player";
+    playerInfo.splice(index, 1);
+    showPlayers();
+  }
+}
 /* This function will pushes the existing surviving players back into the array that lets them use actions again
 If 0 or 1 player(s) are left the game is over. */
 export const nextRound = () => {
   if (playerInfo.length + playerNext.length <= 1) {
     alert("Game Over!");
   } else {
-    console.log(showActivePlayers());
-    console.log({ playerInfo }, { playerNext });
     playerInfo = playerNext;
-    showActivePlayers();
+    showPlayers();
     playerNext = [];
-    console.log({ playerInfo }, { playerNext });
   }
 }
