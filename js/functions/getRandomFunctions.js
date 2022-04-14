@@ -1,5 +1,4 @@
 import { playerInfo, nameList, iconList, weaponList } from "../data/playerData.js"
-
 //This function randomly chooses a name from the nameList array when generating a name for a player
 export const getRandomName = () => {
   return Math.floor(Math.random() * nameList.length);

@@ -1,5 +1,5 @@
 import { getRandomName } from "../functions/getRandomFunctions.js";
-//This array is the array which holds all players before they take place in an action for the round
+//This array holds all players before they take place in an action for the round
 export let playerInfo = [];
 //This array holds all living players after they have taken place in an event during the round
 export let playerNext = [];

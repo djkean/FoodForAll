@@ -49,7 +49,6 @@ document.getElementById("nextRound").addEventListener("click", (e) => {
 window.onload = function () {
   document.getElementById("Page2").style.display = "none";
 };
-
 //Creates a player by randomizing name, icon, and weapon
 function createRandomPlayer(createAmountPlaceholder = null) {
   const randomPlayerName = nameList[getRandomName()];
@@ -58,7 +57,6 @@ function createRandomPlayer(createAmountPlaceholder = null) {
   addNewPlayer(randomPlayerName, randomPlayerIcon, randomPlayerWeapon);
   showPlayers();
 }
-
 //Function handles displaying or hiding different html values to transition to "Page2" of the game
 function beginGame() {
   if (confirm("Begin the game?") && playerInfo.length >= 2) {
@@ -85,6 +83,7 @@ function eventRoll() {
     else return 3; //this is injury
   }
 }
+
 //The function uses a switch case to handle visual display of events as they happen, via text and images
 function renderAction(action) {
   const container = document.createElement("div");
@@ -121,8 +120,8 @@ function renderAction(action) {
 }
 //Tells the game what to do with the player and event when they are rolled
 function playerEvent() {
-  const player = getRandomPlayer();
   const event = eventRoll();
+  const player = getRandomPlayer();
   let action;
   if (event == 1) {
     const enemy = getRandomPlayer();

@@ -1,5 +1,4 @@
 import { playerNext } from "../data/playerData.js"
-
 //Handles the "battle" event where two players fight each other
 export const createBattleAction = (player, enemy) => {
   console.log(player, enemy);
