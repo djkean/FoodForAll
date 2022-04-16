@@ -69,10 +69,10 @@ export const addNewPlayer = (playerName, playerIcon, playerWeapon) => {
   }
 }
 // This is for displaying players. Uses a table to proportionally show players and their values
-export const showPlayers = () => {
+export const showPlayers = (players) => {
   const playerCount = document.getElementById("playerCount");
   playerCount.innerHTML = " ";
-  for (const [index, player] of playerInfo.entries()) {
+  for (const [index, player] of players.entries()) {
     playerCount.innerHTML +=
       `
         <table>
@@ -123,7 +123,7 @@ export const removePlayer = (index) => {
     document.getElementById("createRandomPlayer").innerText =
       "Create Random Player";
     playerInfo.splice(index, 1);
-    showPlayers();
+    showPlayers(playerInfo);
   }
 }
 /* This function will pushes the existing surviving players back into the array that lets them use actions again
@@ -133,7 +133,7 @@ export const nextRound = () => {
     alert("Game Over!");
   } else {
     playerInfo = playerNext;
-    showPlayers();
+    showPlayers(playerInfo);
     playerNext = [];
   }
 }

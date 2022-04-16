@@ -14,7 +14,7 @@ document.getElementById("addNewPlayer").addEventListener("submit", (e) => {
   const playerWeaponKey = document.getElementById("weaponClass").value;
   const playerWeapon = weaponList[playerWeaponKey.toString()];
   addNewPlayer(playerName, playerIcon, playerWeapon);
-  showPlayers();
+  showPlayers(playerInfo);
 });
 
 document.getElementById("beginGame").addEventListener("click", (e) => {
@@ -30,7 +30,7 @@ document.getElementById("beginRound").addEventListener("click", async (e) => {
 while (playerInfo.length >= 1) {
     playerEvent();
   }
-  showPlayers();
+  showPlayers(playerNext);
 });
 /* When starting a new round this clears the past round events in order to make room for the new one
 In the future the "history" of the round(s) will be saved in order to show all the events that ocurred
@@ -55,7 +55,7 @@ function createRandomPlayer(createAmountPlaceholder = null) {
   const randomPlayerIcon = iconList[getRandomIcon()];
   const randomPlayerWeapon = getRandomWeapon();
   addNewPlayer(randomPlayerName, randomPlayerIcon, randomPlayerWeapon);
-  showPlayers();
+  showPlayers(playerInfo);
 }
 //Function handles displaying or hiding different html values to transition to "Page2" of the game
 function beginGame() {
@@ -83,7 +83,6 @@ function eventRoll() {
     else return 3; //this is injury
   }
 }
-
 //The function uses a switch case to handle visual display of events as they happen, via text and images
 function renderAction(action) {
   const container = document.createElement("div");
@@ -133,7 +132,7 @@ function playerEvent() {
   }
   renderAction(action);
   console.log(action, playerInfo, playerNext);
-  showPlayers();
+  showPlayers(playerInfo);
 
   return player, event;
 }
