@@ -13,11 +13,12 @@ html,
 body {
   height: 100%;
   background-color: var(--baseBackground);
+  padding: 1.875em;
 }
 
 body {
   margin: 0;
-  padding: 1em;
+  padding: 1.875em;
 }
 
 .bodyPage2 {
@@ -30,6 +31,7 @@ body {
 
 .buttonList {
   background-color: var(--buttonBackground);
+  border: 0.1875em solid black;
 }
 
 button {
@@ -110,5 +112,10 @@ img.foodDudesWeapon {
   justify-content: space-around;
 }
 
-#Page2 {
+#Page2 img {
+    border: 0.1875em solid black;
+}
+
+.actionContainer {
+  padding: 1em;
 }
