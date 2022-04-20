@@ -126,6 +126,8 @@ export const removePlayer = (index) => {
     showPlayers(playerInfo);
   }
 }
+//REMOVE ONCE DONE CONVERTING innerHTML to createElement() for showPlayers()!!!!
+window.removePlayer = removePlayer;
 /* This function will pushes the existing surviving players back into the array that lets them use actions again
 If 0 or 1 player(s) are left the game is over. */
 export const nextRound = () => {

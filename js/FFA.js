@@ -1,4 +1,4 @@
-import { playerInfo, playerNext, nameList, iconList, weaponList, addNewPlayer, showPlayers, nextRound } from "./data/playerData.js"
+import { playerInfo, playerNext, nameList, iconList, weaponList, addNewPlayer, removePlayer, showPlayers, nextRound } from "./data/playerData.js"
 import { getRandomName, getRandomIcon, getRandomWeapon, getRandomPlayer } from "./functions/getRandomFunctions.js"
 import { createBattleAction, createHealAction, createInjuryAction } from "./functions/createActionFunctions.js"
 
