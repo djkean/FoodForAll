@@ -1,4 +1,4 @@
-import { playerInfo, playerNext, nameList, iconList, weaponList, addNewPlayer, removePlayer, showPlayers, nextRound } from "./data/playerData.js"
+import { playerInfo, playerNext, nameList, iconList, weaponList, addNewPlayer, removePlayer, showPlayers, nextRound, roundActions } from "./data/playerData.js"
 import { getRandomName, getRandomIcon, getRandomWeapon, getRandomPlayer } from "./functions/getRandomFunctions.js"
 import { createBattleAction, createHealAction, createInjuryAction } from "./functions/createActionFunctions.js"
 
@@ -112,9 +112,10 @@ function renderAction(action) {
   container.appendChild(imageContainer);
 
   const text = document.createElement("p");
+  text.classList.add("roundText");
   text.innerText = action.text;
   container.appendChild(text);
-
+  
   document.getElementById("actionLog").appendChild(container);
 }
 //Tells the game what to do with the player and event when they are rolled
@@ -133,6 +134,6 @@ function playerEvent() {
   renderAction(action);
   console.log(action, playerInfo, playerNext);
   showPlayers(playerInfo);
-
+  roundActions.push(action);
   return player, event;
 }

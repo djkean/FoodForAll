@@ -3,6 +3,10 @@ import { getRandomName } from "../functions/getRandomFunctions.js";
 export let playerInfo = [];
 //This array holds all living players after they have taken place in an event during the round
 export let playerNext = [];
+//This array holds all actions done by players in the recent round
+export let roundActions = [];
+//This array holds all actions done by players over the course of the whole game
+export let roundHistory = [];
 //This list is the list used for getRandomName()
 export const nameList = [
   "bob",
@@ -133,9 +137,22 @@ If 0 or 1 player(s) are left the game is over. */
 export const nextRound = () => {
   if (playerInfo.length + playerNext.length <= 1) {
     alert("Game Over!");
+    showHistory();
   } else {
     playerInfo = playerNext;
     showPlayers(playerInfo);
     playerNext = [];
+    roundHistory.push(roundActions);
+    roundActions = [];
+  }
+}
+//Handles looping through the arrays for the text of the objects and displaying them at the end of the game
+export const showHistory = () => {
+  for (const round of roundHistory) {
+    for (const [index, roundAction] of round.entries()) {
+      const roundElement = document.createElement("p");
+      roundElement.textContent = roundAction.text;
+      document.getElementById("showHistory").appendChild(roundElement);
+    }
   }
 }

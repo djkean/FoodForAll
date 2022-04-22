@@ -25,7 +25,7 @@ export const createHealAction = (player) => {
   return {
     type: "Heal",
     player,
-    text: `${player.name} took a moment to rest and healed to ${player.health} health.`,
+    text: `${player.name} took a moment to rest and healed to ${player.health} health`,
   };
 }
 //Handles the "injury" event where a player loses health - outside of battling another player
@@ -37,6 +37,6 @@ export const  createInjuryAction = (player) => {
   return {
     type: "Injury",
     player,
-    text: `${player.name} sustained an injury and has fallen to ${player.health} health.`,
+    text: `${player.name} sustained an injury and has fallen to ${player.health} health`,
   };
 }
