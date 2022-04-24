@@ -3,6 +3,10 @@ import { getRandomName } from "../functions/getRandomFunctions.js";
 export let playerInfo = [];
 //This array holds all living players after they have taken place in an event during the round
 export let playerNext = [];
+//This array holds all actions done by players in the recent round
+export let roundActions = [];
+//This array holds all actions done by players over the course of the whole game
+export let roundHistory = [];
 //This list is the list used for getRandomName()
 export const nameList = [
   "bob",
@@ -36,12 +40,12 @@ export const iconList = [
 //These are all the weapons in the game and their stats
 export const weaponList = {
   0: { name: "Pizza Cutter", attack: 20, strongAgainst: "Pizza" },
-  1: { name: "Spatula", attack: 22, strongAgainst: "Egg" },
-  2: { name: "Butter Knife", attack: 25 },
-  3: { name: "Steak Knife", attack: 23, strongAgainst: "Steak" },
-  4: { name: "Fry Press", attack: 24, strongAgainst: "Fries" },
-  5: { name: "Pie Server", attack: 21, strongAgainst: "Pie" },
-  6: { name: "Waffle Iron", attack: 26, strongAgainst: "Waffle" },
+  1: { name: "Spatula", attack: 20, strongAgainst: "Egg" },
+  2: { name: "Butter Knife", attack: 20 },
+  3: { name: "Steak Knife", attack: 20, strongAgainst: "Steak" },
+  4: { name: "Fry Press", attack: 20, strongAgainst: "Fries" },
+  5: { name: "Pie Server", attack: 20, strongAgainst: "Pie" },
+  6: { name: "Waffle Iron", attack: 20, strongAgainst: "Waffle" },
 };
 // This the the function that handles manually creating new players
 export const addNewPlayer = (playerName, playerIcon, playerWeapon) => {
@@ -126,14 +130,32 @@ export const removePlayer = (index) => {
     showPlayers(playerInfo);
   }
 }
+//REMOVE ONCE DONE CONVERTING innerHTML to createElement() for showPlayers()!!!!
+window.removePlayer = removePlayer;
 /* This function will pushes the existing surviving players back into the array that lets them use actions again
 If 0 or 1 player(s) are left the game is over. */
 export const nextRound = () => {
   if (playerInfo.length + playerNext.length <= 1) {
     alert("Game Over!");
+    showHistory();
   } else {
     playerInfo = playerNext;
     showPlayers(playerInfo);
     playerNext = [];
+    roundHistory.push(roundActions);
+    roundActions = [];
+  }
+}
+//Handles looping through the arrays for the text of the objects and displaying them at the end of the game
+export const showHistory = () => {
+  const titleElement = document.createElement("p");
+  titleElement.textContent = "Game History:";
+  document.getElementById("historyTitle").appendChild(titleElement);
+  for (const round of roundHistory) {
+    for (const [index, roundAction] of round.entries()) {
+      const roundElement = document.createElement("p");
+      roundElement.textContent = roundAction.text;
+      document.getElementById("showHistory").appendChild(roundElement);
+    }
   }
 }

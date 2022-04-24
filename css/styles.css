@@ -119,3 +119,17 @@ img.foodDudesWeapon {
 .actionContainer {
   padding: 1em;
 }
+
+#showHistory {
+  text-align: center;
+  justify-content: space-evenly;
+  padding: 1.2em;
+}
+
+#historyTitle {
+  font-size: 3em;
+  text-align: center;
+  justify-content: space-evenly;
+  text-decoration: underline;
+  padding: 0.2em;
+}
