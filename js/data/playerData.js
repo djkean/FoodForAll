@@ -40,12 +40,12 @@ export const iconList = [
 //These are all the weapons in the game and their stats
 export const weaponList = {
   0: { name: "Pizza Cutter", attack: 20, strongAgainst: "Pizza" },
-  1: { name: "Spatula", attack: 22, strongAgainst: "Egg" },
-  2: { name: "Butter Knife", attack: 25 },
-  3: { name: "Steak Knife", attack: 23, strongAgainst: "Steak" },
-  4: { name: "Fry Press", attack: 24, strongAgainst: "Fries" },
-  5: { name: "Pie Server", attack: 21, strongAgainst: "Pie" },
-  6: { name: "Waffle Iron", attack: 26, strongAgainst: "Waffle" },
+  1: { name: "Spatula", attack: 20, strongAgainst: "Egg" },
+  2: { name: "Butter Knife", attack: 20 },
+  3: { name: "Steak Knife", attack: 20, strongAgainst: "Steak" },
+  4: { name: "Fry Press", attack: 20, strongAgainst: "Fries" },
+  5: { name: "Pie Server", attack: 20, strongAgainst: "Pie" },
+  6: { name: "Waffle Iron", attack: 20, strongAgainst: "Waffle" },
 };
 // This the the function that handles manually creating new players
 export const addNewPlayer = (playerName, playerIcon, playerWeapon) => {

@@ -14,8 +14,8 @@ export const createBattleAction = (player, enemy) => {
     type: "Battle",
     player,
     enemy,
-    text: `${player.name} attacks with ${player.weapon.name}. 
-    ${enemy.name} fights back with ${enemy.weapon.name}`,
+    text: `${player.name} attacks with ${player.weapon.name}. ${enemy.name} now has ${enemy.health} hp
+    ${enemy.name} fights back with ${enemy.weapon.name}. ${player.name} now has ${player.health} hp`,
   };
 }
 //Handles the "heal" event where a player gains health
