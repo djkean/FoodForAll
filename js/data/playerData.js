@@ -148,6 +148,9 @@ export const nextRound = () => {
 }
 //Handles looping through the arrays for the text of the objects and displaying them at the end of the game
 export const showHistory = () => {
+  const titleElement = document.createElement("p");
+  titleElement.textContent = "Game History:";
+  document.getElementById("historyTitle").appendChild(titleElement);
   for (const round of roundHistory) {
     for (const [index, roundAction] of round.entries()) {
       const roundElement = document.createElement("p");
