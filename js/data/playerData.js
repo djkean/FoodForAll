@@ -77,47 +77,65 @@ export const showPlayers = (players) => {
   const playerCount = document.getElementById("playerCount");
   playerCount.innerHTML = " ";
   for (const [index, player] of players.entries()) {
-    playerCount.innerHTML +=
-      `
-        <table>
-            <tr>
-                <th colspan="2">
-                    <button onclick="removePlayer(` +
-      index +
-      `);"> 
-                        <img class="foodDudes" src="images/` +
-      player.icon +
-      `.png" width="96" height="96" alt="a delicious looking picture of food">
-      <img class="foodDudesWeapon" src="images/` +
-      player.weapon.name +
-      `.png" width="30" height="30" alt="a very dangerous looking weapon for your food"></th>
-                    </button>
-                </th>
-            </tr>
-            <tr>
-                <th colspan="2">` +
-      player.name +
-      `</th>
-            </tr>
-            <tr>
-                <th>Health: </th>
-                <td>` +
-      player.health +
-      `</td>
-            </tr>
-            <tr>
-                <th>Attack: </th>
-                <td>` +
-      player.weapon.attack +
-      `</td>
-            </tr>
-            <tr>
-                <th>Weapon: 
-                  <td>` +
-      player.weapon.name +
-      `</td>
-            </tr>
-        </table> `;
+    const table = document.createElement("table");
+    const trImage = document.createElement("tr");
+    const thImage = document.createElement("th");
+    thImage.setAttribute("colspan", 2);
+    const button = document.createElement("button");
+    button.onclick = () => removePlayer(index);
+    const playerImage = document.createElement("img");
+    playerImage.setAttribute("class", "foodDudes");
+    playerImage.setAttribute("src", `images/${player.icon}.png`);
+    playerImage.setAttribute("width", "96");
+    playerImage.setAttribute("height", "96");
+    playerImage.setAttribute("alt", "a delicious looking picture of food");
+    const weaponImage = document.createElement("img");
+    weaponImage.setAttribute("class", "foodDudesWeapon");
+    weaponImage.setAttribute("src", `images/${player.weapon.name}.png`);
+    weaponImage.setAttribute("width", "30");
+    weaponImage.setAttribute("height", "30");
+    weaponImage.setAttribute("alt", "a very dangerous looking weapon for your food");
+    trImage.appendChild(thImage);
+    thImage.appendChild(button);
+    button.appendChild(playerImage);
+    thImage.appendChild(weaponImage);
+    table.appendChild(trImage);
+
+    const trName = document.createElement("tr");
+    const thName = document.createElement("th");
+    thName.setAttribute("colspan", 2);
+    thName.innerText = player.name;
+    trName.appendChild(thName);
+    table.appendChild(trName);
+
+    const trHealth = document.createElement("tr");
+    const thHealth = document.createElement("th");
+    thHealth.innerText = "Health: ";
+    const tdHealth = document.createElement("td");
+    tdHealth.innerText = player.health;
+    trHealth.appendChild(thHealth);
+    trHealth.appendChild(tdHealth);
+    table.appendChild(trHealth);
+
+    const trWeaponAttack = document.createElement("tr");
+    table.appendChild(trWeaponAttack);
+
+    const thWeaponAttack = document.createElement("th");
+    thWeaponAttack.innerText = "Attack: ";
+    const tdWeaponAttack = document.createElement("td");
+    tdWeaponAttack.innerText = player.weapon.attack;
+    trWeaponAttack.appendChild(thWeaponAttack);
+    trWeaponAttack.appendChild(tdWeaponAttack);
+    const trWeaponName = document.createElement("tr");
+    table.appendChild(trWeaponName);
+
+    const thWeaponName = document.createElement("th");
+    thWeaponName.innerText = "Weapon: ";
+    const tdWeaponName = document.createElement("td");
+    tdWeaponName.innerText = player.weapon.name;
+    trWeaponName.appendChild(thWeaponName);
+    trWeaponName.appendChild(tdWeaponName);
+    playerCount.appendChild(table);
   }
 }
 export const removePlayer = (index) => {
