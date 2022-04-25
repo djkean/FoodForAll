@@ -47,6 +47,7 @@ button {
   overflow-y: scroll;
   display: flex;
   min-height: 20em;
+  min-width: 15em;
   background-color: var(--playerBackground);
   border: 0.1875em solid black;
   gap: 0.3125em;
@@ -93,6 +94,11 @@ img.foodDudes:hover {
 img.foodDudesWeapon {
   margin-left: -1.875em;
   margin-top: 6em;
+}
+
+#Page2 {
+  overflow-y: auto;
+  width: 100%;
 }
 
 .bodyPage2 {
