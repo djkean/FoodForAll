@@ -4,4 +4,4 @@ Food For All is a ("Hunger Games" inspired) random battle simulator where you wi
 
 https://djkean.github.io/FoodForAll/
 
-This project was part of my learning experience with https://www.get-coding.ca. In the future updates may be less frequent as I begin other projects.
+This project was part of my learning experience with [Get Coding](https://www.get-coding.ca). In the future updates may be less frequent as I begin other projects.
