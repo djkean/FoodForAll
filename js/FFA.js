@@ -22,19 +22,24 @@ document.getElementById("beginGame").addEventListener("click", (e) => {
   document.getElementById("nextRound").style.display = "none";
   beginGame();
 });
-//Loops until every player has done something this round
+
 document.getElementById("beginRound").addEventListener("click", async (e) => {
   e.preventDefault();
-  document.getElementById("nextRound").style.display = "block";
-  document.getElementById("beginRound").style.display = "none";
-while (playerInfo.length >= 1) {
-    playerEvent();
+  if (playerInfo.length + playerNext.length <= 1) {
+    document.getElementById("nextRound").style.display = "none";
+    document.getElementById("beginRound").style.disabled = true;
+    document.getElementById("beginRound").innerText = "Game Over!";
+    showPlayers(playerInfo); 
+  } else {
+    document.getElementById("nextRound").style.display = "block";
+    document.getElementById("beginRound").style.display = "none";
+    while (playerInfo.length >= 1) {
+      playerEvent();
+    }
+    showPlayers(playerNext); 
   }
-  showPlayers(playerNext);
 });
-/* When starting a new round this clears the past round events in order to make room for the new one
-In the future the "history" of the round(s) will be saved in order to show all the events that ocurred
-in chronological order at the end of the game. */
+
 document.getElementById("nextRound").addEventListener("click", (e) => {
   e.preventDefault();
   nextRound();
@@ -49,7 +54,7 @@ document.getElementById("nextRound").addEventListener("click", (e) => {
 window.onload = function () {
   document.getElementById("Page2").style.display = "none";
 };
-//Creates a player by randomizing name, icon, and weapon
+
 function createRandomPlayer(createAmountPlaceholder = null) {
   const randomPlayerName = nameList[getRandomName()];
   const randomPlayerIcon = iconList[getRandomIcon()];
@@ -57,7 +62,7 @@ function createRandomPlayer(createAmountPlaceholder = null) {
   addNewPlayer(randomPlayerName, randomPlayerIcon, randomPlayerWeapon);
   showPlayers(playerInfo);
 }
-//Function handles displaying or hiding different html values to transition to "Page2" of the game
+
 function beginGame() {
   if (confirm("Begin the game?") && playerInfo.length >= 2) {
     document.getElementById("beginGame").value;
@@ -71,19 +76,19 @@ function beginGame() {
       "You must have 2 or more players";
   }
 }
-//This function is a random number generator. The number determines the event used
+//1 is battle, 2 is heal, 3 is injury
 function eventRoll() {
   const rollNumber = Math.random();
   if (playerInfo.length < 2) {
-    if (rollNumber < 0.5) return 2; //this is heal
-    else return 3; //this is injury
+    if (rollNumber < 0.5) return 2;
+    else return 3;
   } else {
-    if (rollNumber < 0.6) return 1; //this is battle
-    else if (rollNumber < 0.8) return 2; //this is heal
-    else return 3; //this is injury
+    if (rollNumber < 0.6) return 1;
+    else if (rollNumber < 0.8) return 2;
+    else return 3;
   }
 }
-//The function uses a switch case to handle visual display of events as they happen, via text and images
+
 function renderAction(action) {
   const container = document.createElement("div");
   container.className = "actionContainer";
@@ -118,7 +123,7 @@ function renderAction(action) {
   
   document.getElementById("actionLog").appendChild(container);
 }
-//Tells the game what to do with the player and event when they are rolled
+
 function playerEvent() {
   const event = eventRoll();
   const player = getRandomPlayer();

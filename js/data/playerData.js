@@ -1,13 +1,11 @@
 import { getRandomName } from "../functions/getRandomFunctions.js";
-//This array holds all players before they take place in an action for the round
+
 export let playerInfo = [];
-//This array holds all living players after they have taken place in an event during the round
+//Holds all living players after they have taken place in an event during the round
 export let playerNext = [];
-//This array holds all actions done by players in the recent round
 export let roundActions = [];
-//This array holds all actions done by players over the course of the whole game
 export let roundHistory = [];
-//This list is the list used for getRandomName()
+//Used for getRandomName()
 export const nameList = [
   "bob",
   "joe",
@@ -26,7 +24,7 @@ export const nameList = [
   "meghan",
   "rebecca",
 ];
-//This is the list used for getRandomIcon()
+//Used for getRandomIcon()
 export const iconList = [
   "Pizza",
   "Hotdog",
@@ -37,7 +35,6 @@ export const iconList = [
   "Waffle",
   "Pie",
 ];
-//These are all the weapons in the game and their stats
 export const weaponList = {
   0: { name: "Pizza Cutter", attack: 20, strongAgainst: "Pizza" },
   1: { name: "Spatula", attack: 20, strongAgainst: "Egg" },
@@ -47,7 +44,7 @@ export const weaponList = {
   5: { name: "Pie Server", attack: 20, strongAgainst: "Pie" },
   6: { name: "Waffle Iron", attack: 20, strongAgainst: "Waffle" },
 };
-// This the the function that handles manually creating new players
+//Handles manually creating new players
 export const addNewPlayer = (playerName, playerIcon, playerWeapon) => {
   if (playerInfo.length < 20 && playerName == "") {
     playerInfo.push({
@@ -72,7 +69,7 @@ export const addNewPlayer = (playerName, playerIcon, playerWeapon) => {
       "Max Players (20) Achieved";
   }
 }
-// This is for displaying players. Uses a table to proportionally show players and their values
+//Uses a table to proportionally show players and their values
 export const showPlayers = (players) => {
   const playerCount = document.getElementById("playerCount");
   playerCount.innerHTML = " ";
@@ -89,6 +86,7 @@ export const showPlayers = (players) => {
     playerImage.setAttribute("width", "96");
     playerImage.setAttribute("height", "96");
     playerImage.setAttribute("alt", "a delicious looking picture of food");
+
     const weaponImage = document.createElement("img");
     weaponImage.setAttribute("class", "foodDudesWeapon");
     weaponImage.setAttribute("src", `images/${player.weapon.name}.png`);
@@ -138,6 +136,7 @@ export const showPlayers = (players) => {
     playerCount.appendChild(table);
   }
 }
+
 export const removePlayer = (index) => {
   if (confirm("Delete this player?")) {
     document.getElementById("inputButton").disabled = false;
@@ -148,23 +147,19 @@ export const removePlayer = (index) => {
     showPlayers(playerInfo);
   }
 }
-//REMOVE ONCE DONE CONVERTING innerHTML to createElement() for showPlayers()!!!!
-window.removePlayer = removePlayer;
-/* This function will pushes the existing surviving players back into the array that lets them use actions again
-If 0 or 1 player(s) are left the game is over. */
+//Pushes players back into array used for rounds, or ends the game
 export const nextRound = () => {
-  if (playerInfo.length + playerNext.length <= 1) {
-    alert("Game Over!");
-    showHistory();
-  } else {
     playerInfo = playerNext;
     showPlayers(playerInfo);
     playerNext = [];
     roundHistory.push(roundActions);
     roundActions = [];
+  if (playerInfo.length + playerNext.length <= 1) {
+    alert("Game Over!");
+    showHistory();
   }
 }
-//Handles looping through the arrays for the text of the objects and displaying them at the end of the game
+
 export const showHistory = () => {
   const titleElement = document.createElement("p");
   titleElement.textContent = "Game History:";

@@ -1,5 +1,5 @@
 import { playerNext } from "../data/playerData.js"
-//Handles the "battle" event where two players fight each other
+
 export const createBattleAction = (player, enemy) => {
   console.log(player, enemy);
   player.health -= enemy.weapon.attack;
@@ -18,7 +18,7 @@ export const createBattleAction = (player, enemy) => {
     ${enemy.name} fights back with ${enemy.weapon.name}. ${player.name} now has ${player.health} hp`,
   };
 }
-//Handles the "heal" event where a player gains health
+
 export const createHealAction = (player) => {
   player.health += 20;
   playerNext.push(player);
@@ -28,7 +28,7 @@ export const createHealAction = (player) => {
     text: `${player.name} took a moment to rest and healed to ${player.health} health`,
   };
 }
-//Handles the "injury" event where a player loses health - outside of battling another player
+
 export const  createInjuryAction = (player) => {
   player.health -= 20;
   if (player.health > 0) {
