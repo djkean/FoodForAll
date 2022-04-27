@@ -9,6 +9,17 @@
   --buttonBackground: rgb(240, 248, 255);
 }
 
+h1 {
+  font-size: 3em;
+}
+
+#About {
+  text-align: center;
+  font-size: 135%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
 html,
 body {
   height: 100%;
@@ -138,4 +149,30 @@ img.foodDudesWeapon {
   justify-content: space-evenly;
   text-decoration: underline;
   padding: 0.1875em;
+}
+
+@media screen and (min-width: 280px) {
+  .buttonList {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.4em;
+    gap: 1.4em;
+    font-size: 225%;
+  }
+
+  #playerCount {
+    font-size: 175%;
+  }
+
+  #playerCount>div {
+    padding: 0em;
+  }
+
+  #playerCount>table {
+    padding: 0.15em;
+    width: 11em;
+    height: 9em;
+    background-color: var(--baseBackground);
+    border: 0.125em solid black;
+  }
 }

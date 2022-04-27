@@ -2,6 +2,11 @@ import { playerInfo, playerNext, nameList, iconList, weaponList, addNewPlayer, r
 import { getRandomName, getRandomIcon, getRandomWeapon, getRandomPlayer } from "./functions/getRandomFunctions.js"
 import { createBattleAction, createHealAction, createInjuryAction } from "./functions/createActionFunctions.js"
 
+document.getElementById("Dismiss").addEventListener("click", (e) => {
+  e.preventDefault();
+  document.getElementById("About").style.display = "none";
+});
+
 document.getElementById("createRandomPlayer").addEventListener("click", (e) => {
   e.preventDefault();
   createRandomPlayer();
@@ -15,11 +20,15 @@ document.getElementById("addNewPlayer").addEventListener("submit", (e) => {
   const playerWeapon = weaponList[playerWeaponKey.toString()];
   addNewPlayer(playerName, playerIcon, playerWeapon);
   showPlayers(playerInfo);
+    if (playerInfo <= 2) {
+      document.getElementById("beginGame").innerText = "Begin Game";
+    }
 });
 
 document.getElementById("beginGame").addEventListener("click", (e) => {
   e.preventDefault();
   document.getElementById("nextRound").style.display = "none";
+  document.getElementById("About").style.display = "none";
   beginGame();
 });
 
