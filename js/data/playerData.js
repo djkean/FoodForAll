@@ -74,66 +74,37 @@ export const showPlayers = (players) => {
   const playerCount = document.getElementById("playerCount");
   playerCount.innerHTML = " ";
   for (const [index, player] of players.entries()) {
-    const table = document.createElement("table");
-    const trImage = document.createElement("tr");
-    const thImage = document.createElement("th");
-    thImage.setAttribute("colspan", 2);
-    const button = document.createElement("button");
-    button.onclick = () => removePlayer(index);
+    const playerContainer = document.createElement("div");
+    playerContainer.classList.add("playerContainer");
+
+    const playerButton = document.createElement("button");
+    playerButton.classList.add("playerButton");
+
     const playerImage = document.createElement("img");
-    playerImage.setAttribute("class", "foodDudes");
-    playerImage.setAttribute("src", `images/${player.icon}.png`);
-    playerImage.setAttribute("width", "96");
-    playerImage.setAttribute("height", "96");
-    playerImage.setAttribute("alt", "a delicious looking picture of food");
+    playerImage.classList.add("playerImage");
+    playerImage.src = `./images/${player.icon}.png`;
 
-    const weaponImage = document.createElement("img");
-    weaponImage.setAttribute("class", "foodDudesWeapon");
-    weaponImage.setAttribute("src", `images/${player.weapon.name}.png`);
-    weaponImage.setAttribute("width", "30");
-    weaponImage.setAttribute("height", "30");
-    weaponImage.setAttribute("alt", "a very dangerous looking weapon for your food");
-    trImage.appendChild(thImage);
-    thImage.appendChild(button);
-    button.appendChild(playerImage);
-    thImage.appendChild(weaponImage);
-    table.appendChild(trImage);
+    const playerWeaponImage = document.createElement("img");
+    playerWeaponImage.classList.add("playerWeaponImage");
+    playerWeaponImage.src = `./images/${player.weapon.name}.png`;
+    playerButton.appendChild(playerImage);
+    playerButton.appendChild(playerWeaponImage);
+    playerContainer.appendChild(playerButton);
 
-    const trName = document.createElement("tr");
-    const thName = document.createElement("th");
-    thName.setAttribute("colspan", 2);
-    thName.innerText = player.name;
-    trName.appendChild(thName);
-    table.appendChild(trName);
+    const playerName = document.createElement("p");
+    playerName.classList.add("playerName");
+    playerName.innerText = player.name;
+    playerContainer.appendChild(playerName);
 
-    const trHealth = document.createElement("tr");
-    const thHealth = document.createElement("th");
-    thHealth.innerText = "Health: ";
-    const tdHealth = document.createElement("td");
-    tdHealth.innerText = player.health;
-    trHealth.appendChild(thHealth);
-    trHealth.appendChild(tdHealth);
-    table.appendChild(trHealth);
+    const playerHealth = document.createElement("p");
+    playerHealth.innerText = `Health: ${player.health}`;
+    playerContainer.appendChild(playerHealth);
 
-    const trWeaponAttack = document.createElement("tr");
-    table.appendChild(trWeaponAttack);
+    const playerWeapon = document.createElement("p");
+    playerWeapon.innerText = `Weapon: ${player.weapon.name} (${player.weapon.attack})`;
+    playerContainer.appendChild(playerWeapon);
 
-    const thWeaponAttack = document.createElement("th");
-    thWeaponAttack.innerText = "Attack: ";
-    const tdWeaponAttack = document.createElement("td");
-    tdWeaponAttack.innerText = player.weapon.attack;
-    trWeaponAttack.appendChild(thWeaponAttack);
-    trWeaponAttack.appendChild(tdWeaponAttack);
-    const trWeaponName = document.createElement("tr");
-    table.appendChild(trWeaponName);
-
-    const thWeaponName = document.createElement("th");
-    thWeaponName.innerText = "Weapon: ";
-    const tdWeaponName = document.createElement("td");
-    tdWeaponName.innerText = player.weapon.name;
-    trWeaponName.appendChild(thWeaponName);
-    trWeaponName.appendChild(tdWeaponName);
-    playerCount.appendChild(table);
+    playerCount.appendChild(playerContainer);
   }
 }
 
