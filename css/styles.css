@@ -151,7 +151,7 @@ img.foodDudesWeapon {
   padding: 0.1875em;
 }
 
-@media screen and (min-width: 280px) {
+/*@media screen and (min-width: 280px) {
   .buttonList {
     display: flex;
     flex-wrap: wrap;
@@ -175,4 +175,4 @@ img.foodDudesWeapon {
     background-color: var(--baseBackground);
     border: 0.125em solid black;
   }
-}
+}*/
