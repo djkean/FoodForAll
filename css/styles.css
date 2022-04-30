@@ -18,6 +18,8 @@ h1 {
   font-size: 135%;
   margin-left: 15%;
   margin-right: 15%;
+  margin-top: 15%;
+  margin-bottom: 15%;
 }
 
 html,
@@ -43,6 +45,7 @@ body {
 .buttonList {
   background-color: var(--buttonBackground);
   border: 0.1875em solid black;
+  gap: 1em;
 }
 
 button {
@@ -51,7 +54,7 @@ button {
 
 #beginGame {
   padding: 0.3125em;
-  margin: 0.3125em 0em 0.3125em 0em;
+  margin: 0.3125em, 0em, 0.3125em, 0em;
 }
 
 #playerCount {
@@ -151,7 +154,11 @@ img.foodDudesWeapon {
   padding: 0.1875em;
 }
 
-/*@media screen and (min-width: 280px) {
+@media screen and (max-width: 640px) {
+
+  body {
+    background-color: brown;
+  }
   .buttonList {
     display: flex;
     flex-wrap: wrap;
@@ -175,4 +182,4 @@ img.foodDudesWeapon {
     background-color: var(--baseBackground);
     border: 0.125em solid black;
   }
-}*/
+}
