@@ -52,11 +52,6 @@ button {
   background-color: var(--buttonBackground);
 }
 
-#beginGame {
-  padding: 0.3125em;
-  margin: 0.3125em, 0em, 0.3125em, 0em;
-}
-
 #playerCount {
   overflow-y: scroll;
   display: flex;
@@ -170,19 +165,76 @@ button {
 
 @media screen and (max-width: 640px) {
 
-  body {
-    background-color: brown;
+  #About {
+    font-size: 100%;
+    margin: 0;
   }
+
+  #Dismiss{
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 13px); 
+  }
+
+  #playerName {
+    text-align: center;
+    width: calc(100% - 13px);
+  }
+
+  form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0.5em 0;
+    gap: 0.5em 1em;
+    justify-content: center;
+  }
+
+  #beginGame {
+    justify-content: center;
+    width: calc(100% - 13px);
+  }
+
+  .playerContainer {
+    display: flex;
+    width: auto;
+    height: auto;
+  }
+
+  .weaponName {
+    font-size: 80%;
+  }
+
+  body {
+    font-size: 110%;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    padding: 0;
+  }
+
   .buttonList {
     display: flex;
     flex-wrap: wrap;
-    padding: 1.4em;
-    gap: 1.4em;
-    font-size: 225%;
+    flex-direction: row;
+    align-content: center;
+    height: 3em;
+    width: 45%;
+    margin: 0.5em;
+  }
+
+  .Page1 {
+    flex-wrap: wrap;
+  }
+
+  .playerButton {
+    flex: 0;
   }
 
   #playerCount {
-    font-size: 175%;
+    font-size: 125%;
   }
 
   #playerCount>div {
@@ -191,9 +243,19 @@ button {
 
   #playerCount>table {
     padding: 0.15em;
-    width: 11em;
+    width: 9em;
     height: 9em;
     background-color: var(--baseBackground);
     border: 0.125em solid black;
+  }
+
+  .bodyPage2 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .playerCountPage2 {
+    display: flex;
+    flex-wrap: wrap;
   }
 }

@@ -101,6 +101,7 @@ export const showPlayers = (players) => {
     playerContainer.appendChild(playerHealth);
 
     const playerWeapon = document.createElement("p");
+    playerWeapon.classList.add("weaponName");
     playerWeapon.innerText = `Weapon: ${player.weapon.name} (${player.weapon.attack})`;
     playerContainer.appendChild(playerWeapon);
 

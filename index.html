@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400&display=swap" rel="stylesheet">
@@ -33,25 +34,27 @@
           class="buttonList"
           pattern="[a-zA-Z0-9]+"
         />
-        <select id="playerClass" class="buttonList">
-          <option value="Pizza">Pizza</option>
-          <option value="Hotdog">Hotdog</option>
-          <option value="Burger">Burger</option>
-          <option value="Fries">Fries</option>
-          <option value="Steak">Steak</option>
-          <option value="Egg">Egg</option>
-          <option value="Waffle">Waffle</option>
-          <option value="Pie">Pie</option>
-        </select>
-        <select id="weaponClass" class="buttonList">
-          <option value="0">Pizza Cutter</option>
-          <option value="1">Spatula</option>
-          <option value="2">Butter Knife</option>
-          <option value="3">Steak Knife</option>
-          <option value="4">Fry Press</option>
-          <option value="5">Pie Server</option>
-          <option value="6">Waffle Iron</option>
-        </select>
+          <select id="playerClass" class="buttonList">
+            <option value="" hidden>Choose Icon</option>
+            <option value="Pizza">Pizza</option>
+            <option value="Hotdog">Hotdog</option>
+            <option value="Burger">Burger</option>
+            <option value="Fries">Fries</option>
+            <option value="Steak">Steak</option>
+            <option value="Egg">Egg</option>
+            <option value="Waffle">Waffle</option>
+            <option value="Pie">Pie</option>
+          </select>
+          <select id="weaponClass" class="buttonList">
+            <option value="" hidden>Choose Weapon</option>
+            <option value="0">Pizza Cutter</option>
+            <option value="1">Spatula</option>
+            <option value="2">Butter Knife</option>
+            <option value="3">Steak Knife</option>
+            <option value="4">Fry Press</option>
+            <option value="5">Pie Server</option>
+            <option value="6">Waffle Iron</option>
+          </select>
         <input
           id="inputButton"
           class="buttonList"
@@ -59,10 +62,10 @@
           value="Add New Player"
         />
         <button id="createRandomPlayer" class="buttonList">
-          Create Random Player
+          Add Random Player
         </button>
+        <button id="beginGame" class="buttonList">Begin Game</button>
       </form>
-      <button id="beginGame" class="buttonList">Begin Game</button>
     </div>
     <div id="playerCount" class="playerCountPage1"></div>
     <div id="Page2">
