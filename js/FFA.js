@@ -17,7 +17,7 @@ document.getElementById("addNewPlayer").addEventListener("submit", (e) => {
   const playerName = document.getElementById("playerName").value;
   const playerIcon = document.getElementById("playerClass").value;
   const playerWeaponKey = document.getElementById("weaponClass").value;
-  const playerWeapon = weaponList[playerWeaponKey.toString()];
+  const playerWeapon = weaponList[playerWeaponKey];
   addNewPlayer(playerName, playerIcon, playerWeapon);
   showPlayers(playerInfo);
     if (playerInfo <= 2) {
