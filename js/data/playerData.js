@@ -102,7 +102,7 @@ export const showPlayers = (players) => {
 
     const playerWeapon = document.createElement("p");
     playerWeapon.classList.add("weaponName");
-    playerWeapon.innerText = `Weapon: ${player.weapon.name} (${player.weapon.attack})`;
+    playerWeapon.innerText = `${player.weapon.name} (${player.weapon.attack})`;
     playerContainer.appendChild(playerWeapon);
 
     playerCount.appendChild(playerContainer);
@@ -135,6 +135,8 @@ export const nextRound = () => {
 export const showHistory = () => {
   const titleElement = document.createElement("p");
   titleElement.textContent = "Game History:";
+  document.getElementById("showHistory").style.display = "block";
+  document.getElementById("actionLog").style.display = "none";
   document.getElementById("historyTitle").appendChild(titleElement);
   for (const round of roundHistory) {
     for (const [index, roundAction] of round.entries()) {
